@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>memory</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div id="app">
+
+  <!-- ==================== TITLE SCREEN ==================== -->
+
+  <section id="title" class="screen active">
+
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <div class="title-box">
+
+      <p class="tiny">
+        a little journey through our memories ♡
+      </p>
+
+      <h1>
+        A TRIP DOWN<br>
+        MEMORY LANE
+      </h1>
+
+      <p class="subtitle">
+        Five years of memories,<br>
+        little moments, and everything in between.
+      </p>
+
+      <button onclick="startGame()">
+        START THE JOURNEY
+      </button>
+
+    </div>
+
+    <div class="sparkle sparkle1">✦</div>
+    <div class="sparkle sparkle2">✧</div>
+    <div class="sparkle sparkle3">♡</div>
+    <div class="sparkle sparkle4">✦</div>
+
+  </section>
+
+
+  <!-- ==================== MAP ==================== -->
+
+  <section id="map" class="screen">
+
+    <div class="topbar">
+
+      <button onclick="show('title')" class="back-button">
+        ←
+      </button>
+
+      <span>MEMORY LANE</span>
+
+      <span id="progress">
+        0 / 6
+      </span>
+
+    </div>
+
+
+    <div class="map-box">
+
+      <h2>♡ OUR MEMORY LANE ♡</h2>
+
+      <p class="map-subtitle">
+        okay... let's take a little trip back ♡
+      </p>
+
+
+      <div class="locations">
+
+        <button
+          class="location"
+          onclick="openLocation('start')"
+        >
+
+          <span>🌸</span>
+
+          <b>2020</b>
+
+          <small>
+            Where It Started
+          </small>
+
+        </button>
+
+
+        <button
+          class="location"
+          onclick="openLocation('meet')"
+        >
+
+          <span>🏸</span>
+
+          <b>Court</b>
+
+          <small>
+            The First Meet
+          </small>
+
+        </button>
+
+
+        <button
+          class="location"
+          onclick="openLocation('anniv')"
+        >
+
+          <span>💗</span>
+
+          <b>October 15</b>
+
+          <small>
+            The Day
+          </small>
+
+        </button>
+
+
+        <button
+          class="location"
+          onclick="openLocation('kai')"
+        >
+
+          <span>☕</span>
+
+          <b>Kai's Corner</b>
+
+          <small>
+            A little about you
+          </small>
+
+        </button>
+
+
+        <button
+          class="location"
+          onclick="openLocation('memories')"
+        >
+
+          <span>📸</span>
+
+          <b>Memory Lane</b>
+
+          <small>
+            Our favorite moments
+          </small>
+
+        </button>
+
+
+        <button
+          class="location"
+          onclick="openLocation('quiz')"
+        >
+
+          <span>🎮</span>
+
+          <b>Memory Check</b>
+
+          <small>
+            Let's see what you remember
+          </small>
+
+        </button>
+
+      </div>
+
+
+      <div class="quest-box">
+
+        <b>✦ LITTLE QUEST ✦</b>
+
+        <p id="questText">
+          Explore our memories ♡
+        </p>
+
+      </div>
+
+      <button
+        id="finalQuestButton"
+        class="wide-button final-quest-button"
+        onclick="openFinalQuest()"
+        style="display:none;"
+    >
+      ✦ PROCEED TO THE LAST QUEST ✦
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================== MEMORY ALBUM ==================== -->
+<section id="memories" class="screen">
+
+  <div class="content-box memory-album">
+
+    <p class="tiny center">✦ OUR MEMORY ALBUM ✦</p>
+
+    <h2 id="albumTitle">First Meet ♡</h2>
+
+    <p id="albumDate" class="album-date">
+      October 6, 2021
+    </p>
+
+    <div class="album-photo-wrapper">
+      <img
+        id="albumImage"
+        src="images/first-meet.jpg"
+        alt="First Meet"
+      >
+    </div>
+
+    <p id="albumDescription" class="album-description">
+      The day we finally met in person. 🥹
+    </p>
+
+    <p id="albumCounter" class="album-counter">
+      1 / 5
+    </p>
+
+    <div class="album-buttons">
+
+      <button
+        id="albumBack"
+        class="wide-button album-button"
+        onclick="previousMemory()"
+      >
+        ← BACK
+      </button>
+
+      <button
+        id="albumNext"
+        class="wide-button album-button"
+        onclick="nextMemory()"
+      >
+        NEXT →
+      </button>
+
+    </div>
+
+    <button
+      id="albumFinish"
+      class="wide-button"
+      onclick="finishAlbum()"
+      style="display:none;"
+    >
+      ✦ FINISH ALBUM ♡
+    </button>
+
+  </div>
+
+</section>
+
+
+  <!-- ==================== QUIZ ==================== -->
+
+  <section id="quiz" class="screen">
+
+    <div class="topbar">
+
+      <button
+        onclick="show('map')"
+        class="back-button"
+      >
+        ←
+      </button>
+
+      <span>MEMORY CHECK</span>
+
+      <span>🎮</span>
+
+    </div>
+
+
+    <div class="content-box quiz-box">
+
+      <p class="tiny">
+        okay... let's see what you remember 👀
+      </p>
+
+      <h2 id="question">
+        Loading...
+      </h2>
+
+      <div id="answers"></div>
+
+      <p id="quizResult"></p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================== POPUP ==================== -->
+
+  <div id="popup" class="popup">
+
+    <div class="popup-box">
+
+      <button
+        class="close"
+        onclick="closePopup()"
+      >
+        ×
+      </button>
+
+      <div id="popupContent"></div>
+
+    </div>
+
+  </div>
+
+
+ <!-- ==================== FINAL QUEST ==================== -->
+
+<section id="finalQuest" class="screen">
+
+  <div class="content-box final-quest-box">
+
+    <p class="tiny center">
+      ✦ QUEST COMPLETE ✦
+    </p>
+
+    <h2>One Last Thing... ♡</h2>
+
+    <div class="final-quest-message">
+
+      <p>
+        You found all the memories.
+      </p>
+
+      <p>
+        You made it through our little
+        trip down memory lane. 🥹
+      </p>
+
+      <p>
+        But before the journey ends...
+      </p>
+
+      <p class="final-prompt">
+        there's one last thing waiting for you.
+      </p>
+
+    </div>
+
+    <button
+      class="wide-button"
+      onclick="openLetter()"
+    >
+      💌 OPEN THE FINAL MEMORY
+    </button>
+
+  </div>
+
+</section>
+    
+  <!-- ==================== FINAL LETTER ==================== -->
+
+  <section id="letter" class="screen">
+
+    <div class="content-box letter-box">
+
+      <p class="tiny center">
+        ✦ FINAL MEMORY UNLOCKED ✦
+      </p>
+
+      <h2>
+        One Last Stop ♡
+      </h2>
+
+      <div class="letter-paper">
+
+        <p id="letterText"></p>
+
+      </div>
+
+
+      <button
+        class="wide-button"
+        onclick="show('map')"
+      >
+        BACK TO MEMORY LANE ♡
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+    <script src="./script.js"></script>
+
+  </body>
+  
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
